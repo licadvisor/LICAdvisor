@@ -3,7 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const contactRoutes = require('./routes/contact');
-const QuoteRequest = require('./models/QuoteRequest');
+// Fix the model import path
+const QuoteRequest = require('./models/quote-request');
 const expressLayouts = require('express-ejs-layouts');
 const adminAuthRoutes = require('./routes/adminAuthRoutes');
 const adminRoutes = require('./routes/adminRoutes');
