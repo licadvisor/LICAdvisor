@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - LIC Advisor</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <h1>Get in Touch</h1>
+            <p>We're here to help you secure your future</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Arjunpur Market, Opposite of IDBI bank, Farakka, 742202</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <p><a href="tel:+919064168537">+91 9064168537</a></p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:licadvisormail@gmail.com">licadvisormail@gmail.com</a></p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <p>Mon - Fri: 9am - 7pm EST</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Send us a Message</h2>
+                <div class="form-message"></div>
+                <!-- Remove the action and method from the form -->
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required minlength="3">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <div class="phone-input-container">
+                            <span class="phone-prefix">+91</span>
+                            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" maxlength="10">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="policy">Policy Information</option>
+                            <option value="claim">Claim Support</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Phone number validation with visual feedback
+        const phoneInput = document.getElementById('phone');
+        
+        function updatePhoneValidation() {
+            if (phoneInput.value.length === 10) {
+                phoneInput.style.borderColor = '#4CAF50';
+                phoneInput.style.backgroundColor = '#f0fff0';
+            } else {
+                phoneInput.style.borderColor = '#ff4444';
+                phoneInput.style.backgroundColor = '#fff0f0';
+            }
+        }
+
+        phoneInput.addEventListener('input', updatePhoneValidation);
+        phoneInput.addEventListener('keypress', function(e) {
+            if (e.key < '0' || e.key > '9') {
+                e.preventDefault();
+            }
+        });
+
+        phoneInput.addEventListener('paste', function(e) {
+            const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+            if (!/^\d+$/.test(pastedText)) {
+                e.preventDefault();
+            }
+        });
+        // Phone number validation code remains the same
+        
+        // Email validation
+        const emailInput = document.getElementById('email');
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        const validDomains = [
+            'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 
+            'rediffmail.com', 'live.com', 'aol.com', 'icloud.com',
+            'protonmail.com', 'zoho.com', 'ymail.com'
+        ];
+        
+        // Additional validation rules for common email patterns
+        function isValidEmailPattern(email) {
+            const [localPart, domain] = email.split('@');
+            
+            // Check for valid domain
+            if (!validDomains.includes(domain)) return false;
+
+            // Gmail-specific rules
+            if (domain === 'gmail.com') {
+                // Gmail doesn't allow dots at start/end or multiple consecutive dots
+                if (localPart.startsWith('.') || localPart.endsWith('.') || localPart.includes('..')) return false;
+                // Gmail requires 6-30 characters in local part
+                if (localPart.length < 6 || localPart.length > 30) return false;
+                // Gmail only allows letters, numbers, dots, and underscores
+                if (!/^[a-zA-Z0-9._]+$/.test(localPart)) return false;
+            }
+
+            // General rules for all email providers
+            // No special characters at start or end
+            if (/^[._-]|[._-]$/.test(localPart)) return false;
+            // Minimum length for local part
+            if (localPart.length < 3) return false;
+            // No consecutive special characters
+            if (/[._-]{2,}/.test(localPart)) return false;
+
+            return true;
+        }
+        
+        emailInput.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                if (emailRegex.test(this.value) && isValidEmailPattern(this.value)) {
+                    this.style.borderColor = '#4CAF50';
+                    this.style.backgroundColor = '#f0fff0';
+                } else {
+                    this.style.borderColor = '#ff4444';
+                    this.style.backgroundColor = '#fff0f0';
+                }
+            } else {
+                this.style.borderColor = '#ddd';
+                this.style.backgroundColor = '#f8f9fa';
+            }
+        });
+
+        // Form submission validation
+        // Update the form submission handler in your existing script
+        // Single form submission handler with debounce
+        // Form submission handling
+        const form = document.getElementById('contactForm');
+        let isSubmitting = false;
+        
+        // Create loading overlay
+        const loadingOverlay = document.createElement('div');
+        loadingOverlay.className = 'loading-overlay';
+        loadingOverlay.innerHTML = `
+            <div class="loading-spinner">
+                <i class="fas fa-circle-notch fa-spin"></i>
+                <p>Sending your message...</p>
+            </div>
+        `;
+        document.body.appendChild(loadingOverlay);
+        
+        // Add styles for notifications and overlay
+        const style = document.createElement('style');
+        style.textContent = `
+            .loading-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 9999;
+                justify-content: center;
+                align-items: center;
+            }
+            .loading-spinner {
+                background: white;
+                padding: 30px 50px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            }
+            .loading-spinner i {
+                font-size: 50px;
+                color: #004d99;
+                margin-bottom: 15px;
+            }
+            .loading-spinner p {
+                margin: 0;
+                color: #333;
+                font-size: 16px;
+            }
+            #notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 16px 28px;
+                border-radius: 8px;
+                z-index: 10000;
+                display: none;
+                align-items: center;
+                gap: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                font-size: 16px;
+                animation: slideIn 0.3s ease-out;
+            }
+            #notification.success {
+                background: #4CAF50;
+                color: white;
+                display: flex;
+            }
+            #notification.error {
+                background: #f44336;
+                color: white;
+                display: flex;
+            }
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.id = 'notification';
+        document.body.appendChild(notification);
+
+        function showNotification(message, type) {
+            notification.className = type;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                ${message}
+            `;
+            
+            setTimeout(() => {
+                notification.className = '';
+            }, 4000);
+        }
+
+        // Form submission handler
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            if (isSubmitting) return;
+            
+            isSubmitting = true;
+            loadingOverlay.style.display = 'flex';
+            const submitBtn = this.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            try {
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                const response = await fetch('/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification(result.message, 'success');
+                    form.reset();
+                    // Reset validation styles
+                    const inputs = form.querySelectorAll('input, textarea, select');
+                    inputs.forEach(input => {
+                        input.style.borderColor = '';
+                        input.style.backgroundColor = '';
+                    });
+                } else {
+                    showNotification(result.message || 'An error occurred', 'error');
+                }
+            } catch (error) {
+                showNotification('An error occurred. Please try again.', 'error');
+            } finally {
+                setTimeout(() => {
+                    loadingOverlay.style.display = 'none';
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    isSubmitting = false;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

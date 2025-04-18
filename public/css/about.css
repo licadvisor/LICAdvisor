@@ -1,0 +1,652 @@
+/* Add at the top of the file */
+:root {
+    --primary-color: #003366;
+    --secondary-color: #ff9900;
+    --text-color: #333;
+    --light-bg: #f5f5f5;
+    --white: #ffffff;
+}
+.about-container {
+    margin-top: 80px;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f9ff 0%, #edf4ff 100%);
+}
+.expertise-section {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #e8f0fa 0%, #f5f9ff 100%);
+}
+.expertise-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+.expertise-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+.expertise-section h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    animation: slideLineExpertise 2s ease-in-out infinite;
+}
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+.expertise-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+.expertise-card i {
+    font-size: 3.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.expertise-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 51, 102, 0.12);
+}
+.expertise-card:hover i {
+    color: var(--secondary-color);
+    transform: scale(1.1) rotate(8deg);
+}
+.expertise-card h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    font-weight: 600;
+}
+.expertise-card p {
+    color: var(--text-color);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-top: 0.8rem;
+}/* Add these styles for the Achievement section heading */
+.achievement-section {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #f0f6ff 0%, #e6f0ff 100%);
+    text-align: center;
+}
+.achievement-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+.achievement-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+.achievement-section h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    animation: slideLineAchievement 2s ease-in-out infinite;
+}
+
+@keyframes slideLineAchievement {
+    0% { width: 40px; }
+    50% { width: 80px; }
+    100% { width: 40px; }
+}
+.achievement-cards {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    padding: 3rem;
+    background: linear-gradient(135deg, #f0f6ff 0%, #e6f0ff 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.achievement-card {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: var(--white);
+    border-radius: 15px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 51, 102, 0.08);
+}/* Add section separator styles */
+.section-separator {
+    width: 150px;
+    height: 3px;
+    margin: 0 auto;
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+    opacity: 0.2;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+.achievement-card:hover::before {
+    transform: scaleX(1);
+}
+.achievement-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+    display: inline-block;
+}
+.achievement-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 51, 102, 0.15);
+}
+.achievement-card:hover i {
+    color: var(--secondary-color);
+    transform: scale(1.2) rotateY(180deg);
+}
+.achievement-card h3 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin: 1rem 0;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.achievement-card p {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}/* Fix keyframes syntax - remove the dot prefix */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.achievement-card:hover h3 {
+    animation: pulse 1s infinite;
+}
+/* Keep existing root and about-container styles */
+.about-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #004d99 100%);
+    padding: 8rem 5% 6rem;
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/images/pattern-dot.png') repeat;
+    opacity: 0.1;
+    animation: slide 20s linear infinite;
+}
+.about-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.about-content h1 {
+    font-size: 4.2rem;
+    margin-bottom: 1.2rem;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    animation: fadeInDown 0.8s ease-out;
+    background: linear-gradient(135deg, #ffffff, #e6e6e6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.about-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.5), transparent);
+}
+.designation {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    font-weight: 500;
+    animation: fadeInUp 0.8s ease-out 0.2s;
+    animation-fill-mode: both;
+}
+.experience-badge {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInUp 0.8s ease-out 0.4s;
+    animation-fill-mode: both;
+    transition: all 0.3s ease;
+}
+.experience-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background: rgba(255, 153, 0, 0.2); /* Changed from solid orange to transparent */
+}
+.experience-badge i {
+    margin-right: 0.5rem;
+    color: #ffd700; /* Changed to gold color */
+    animation: starRotate 2s infinite;
+}
+.experience-badge:hover i {
+    color: #ffd700; /* Maintain gold color on hover */
+    transform: scale(1.2); /* Add slight scale effect on hover */
+}
+.experience-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background: var(--secondary-color);
+}
+.experience-badge i {
+    margin-right: 0.5rem;
+    color: var(--secondary-color);
+    animation: starRotate 2s infinite;
+}
+.keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes starRotate {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(15deg); }
+    75% { transform: rotate(-15deg); }
+    100% { transform: rotate(0deg); }
+}
+.keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: 100% 100%; }
+}
+/* Keep existing root and about-container styles */
+.about-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #004d99 100%);
+    padding: 6rem 5% 4rem;
+    color: var(--white);
+    text-align: center;
+}
+.about-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}/* Why Choose LIC Section */
+.why-choose-section {
+    padding: 5rem 5%;
+    background: linear-gradient(135deg, #f0f6ff 0%, #e6f0ff 100%);
+    text-align: center;
+}
+.why-choose-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+.why-choose-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+.why-choose-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+.why-choose-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.why-choose-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 51, 102, 0.12);
+}
+.why-choose-card:hover i {
+    color: var(--secondary-color);
+    transform: scale(1.1) rotate(8deg);
+}
+.why-choose-card h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    font-weight: 600;
+}
+.why-choose-card p {
+    color: var(--text-color);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-top: 0.8rem;
+}/* Replace the existing expertise-section h2 styles */
+.expertise-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+.expertise-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+.expertise-section h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    animation: slideLineExpertise 2s ease-in-out infinite;
+}
+.expertise-section h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    animation: slideLineExpertise 2s ease-in-out infinite;
+}
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+.commitment-section h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+.commitment-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+.commitment-section h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+    animation: slideLineCommitment 2s ease-in-out infinite;
+}
+@keyframes slideLineCommitment {
+    0% { width: 40px; }
+    50% { width: 80px; }
+    100% { width: 40px; }
+}
+.commitment-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+.commitment-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+.commitment-card i {
+    font-size: 3.2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.commitment-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 51, 102, 0.12);
+}
+.commitment-card:hover i {
+    color: var(--secondary-color);
+    transform: scale(1.1) rotate(8deg);
+}
+.commitment-card h3 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    font-weight: 600;
+}
+.commitment-card p {
+    color: var(--text-color);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-top: 0.8rem;
+}
+.commitment-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+.commitment-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+.commitment-card p {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+/* Credentials Section */
+.credentials-section {
+    padding: 4rem 5%;
+    background: linear-gradient(135deg, #f0f6ff 0%, #e6f0ff 100%);
+    text-align: center;
+}
+.credential-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.credential-card h3 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+.credential-card .agency-code {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.credential-card .experience {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.credential-card .license {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+.credential-card .disclaimer {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}
+/* CTA Section */
+.cta-section {
+    padding: 4rem 5%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #004d99 100%);
+    color: var(--white);
+    text-align: center;
+}
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.btn {
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.btn.primary {
+    background: var(--secondary-color);
+    color: var(--white);
+}
+.btn.secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}

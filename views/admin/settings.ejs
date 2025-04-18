@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings - LIC Advisor</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+    <link rel="stylesheet" href="/css/admin-settings.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <%- include('partials/sidebar') %>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Settings</h1>
+                </div>
+            </header>
+
+            <div class="settings-container">
+                <div class="settings-card">
+                    <h2><i class="fas fa-shield-alt"></i> Update Recovery Code</h2>
+                    <form id="recovery-form" class="settings-form">
+                        <div class="form-group">
+                            <label>Current Password</label>
+                            <input type="password" name="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label>New Recovery Code</label>
+                            <input type="text" name="newRecoveryCode" required>
+                        </div>
+                        <button type="submit">Update Recovery Code</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add these elements for popup -->
+    <div id="overlay" class="overlay"></div>
+    <div id="popup" class="popup">
+        <i id="popup-icon" class="popup-icon"></i>
+        <div id="popup-message" class="popup-message"></div>
+        <button id="popup-button" class="popup-button">OK</button>
+    </div>
+
+    <script src="/js/admin-settings.js"></script>
+</body>
+</html>

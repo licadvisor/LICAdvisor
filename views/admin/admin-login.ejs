@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - LIC Advisor</title>
+    <link rel="stylesheet" href="/css/admin-login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/captcha.css">
+</head>
+<body>
+    <div class="admin-login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <img src="/images/lic-logo.png" alt="LIC Logo">
+                <h2>Admin Portal</h2>
+            </div>
+            <!-- Add error message div -->
+            <div class="error-message" style="display: none; color: var(--error-color); margin-bottom: 1rem; text-align: center; font-size: 0.9rem;"></div>
+            <!-- Add after the error-message div -->
+            <div class="success-message" style="display: none; color: var(--success-color); margin-bottom: 1rem; text-align: center; font-size: 0.9rem;"></div>
+            
+            <form action="/admin/login" method="POST" class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" placeholder="Admin Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <!-- Add password requirements here, right after the password input -->
+                    <div class="password-requirements" style="display: none;">
+                        <ul>
+                            <li data-requirement="length"> At least 8 characters</li>
+                            <li data-requirement="uppercase"> One uppercase letter</li>
+                            <li data-requirement="lowercase"> One lowercase letter</li>
+                            <li data-requirement="number"> One number</li>
+                            <li data-requirement="special"> One special character</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Add after password input group and before login button -->
+                <div class="captcha-container">
+                    <div class="captcha-box">
+                        <div id="captcha" class="captcha-image"></div>
+                        <button type="button" class="refresh-captcha" id="refreshCaptcha">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-shield-alt"></i>
+                        <input type="text" id="captchaInput" placeholder="Enter CAPTCHA" required>
+                    </div>
+                </div>
+                <button type="submit" class="login-btn">Login to Admin Panel</button>
+            </form>
+            <div class="login-footer">
+                <a href="/admin/forgot-password">Forgot Password ?</a>
+                <a href="/">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add JavaScript for form handling -->
+    <script>
+        // Add this at the beginning of your script
+        window.addEventListener('load', () => {
+            // Clear form fields on page load
+            const form = document.querySelector('.login-form');
+            form.reset();
+            
+            // Clear any stored data
+            localStorage.removeItem('adminUsername');
+            
+            // Clear any error or success messages
+            const errorDiv = document.querySelector('.error-message');
+            const successDiv = document.querySelector('.success-message');
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+        });
+    
+        // Your existing form submission code
+        document.querySelector('.login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errorDiv = document.querySelector('.error-message');
+            const successDiv = document.querySelector('.success-message');
+            const loginBtn = document.querySelector('.login-btn');
+            
+            try {
+                loginBtn.disabled = true;
+                loginBtn.textContent = 'Verifying...';
+                errorDiv.style.display = 'none';
+                successDiv.style.display = 'none';
+    
+                const response = await fetch('/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: e.target.username.value,
+                        password: e.target.password.value
+                    })
+                });
+    
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    errorDiv.textContent = data.error;
+                    errorDiv.style.display = 'block';
+                    errorDiv.classList.add('show');
+                    errorDiv.style.animation = 'shake 0.5s';
+                    setTimeout(() => errorDiv.style.animation = '', 500);
+                } else {
+                    successDiv.textContent = 'Login successful! Redirecting to dashboard...';
+                    successDiv.style.display = 'block';
+                    successDiv.classList.add('show');
+                    setTimeout(() => {
+                        window.location.href = '/admin/dashboard';
+                    }, 1500);
+                }
+            } catch (error) {
+                errorDiv.textContent = 'An error occurred. Please try again.';
+                errorDiv.style.display = 'block';
+                errorDiv.classList.add('show');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Login to Admin Panel';
+            }
+        });
+    </script>
+
+    <!-- Add shake animation -->
+    <style>
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    </style>
+<!-- Add password requirements modal -->
+<!-- Update the requirements list HTML -->
+<div class="password-requirements" style="display: none;">
+    <ul>
+        <li data-requirement="length">At least 8 characters</li>
+        <li data-requirement="uppercase">One uppercase letter</li>
+        <li data-requirement="lowercase">One lowercase letter</li>
+        <li data-requirement="number">One number</li>
+        <li data-requirement="special">One special character</li>
+    </ul>
+</div>
+
+<script>
+    const passwordInput = document.querySelector('input[type="password"]');
+    const requirementsList = document.querySelector('.password-requirements');
+    
+    passwordInput.addEventListener('focus', () => {
+        // Only show requirements if password doesn't meet all criteria
+        const allRequirementsMet = checkAllRequirements();
+        if (!allRequirementsMet) {
+            requirementsList.style.display = 'block';
+        }
+    });
+
+    passwordInput.addEventListener('blur', () => {
+        requirementsList.style.display = 'none';
+    });
+
+    function checkAllRequirements() {
+        const password = passwordInput.value;
+        const requirements = {
+            length: password.length >= 8,
+            uppercase: /[A-Z]/.test(password),
+            lowercase: /[a-z]/.test(password),
+            number: /[0-9]/.test(password),
+            special: /[!@#$%^&*]/.test(password)
+        };
+        
+        return Object.values(requirements).every(req => req === true);
+    }
+
+    passwordInput.addEventListener('input', () => {
+        const password = passwordInput.value;
+        const requirements = {
+            length: password.length >= 8,
+            uppercase: /[A-Z]/.test(password),
+            lowercase: /[a-z]/.test(password),
+            number: /[0-9]/.test(password),
+            special: /[!@#$%^&*]/.test(password)
+        };
+// Update the requirements checking JavaScript
+Object.keys(requirements).forEach(req => {
+    const li = requirementsList.querySelector(`[data-requirement="${req}"]`);
+    if (requirements[req]) {
+        li.classList.add('valid');
+    } else {
+        li.classList.remove('valid');
+    }
+});
+        // Hide requirements if all are met
+        if (checkAllRequirements()) {
+            requirementsList.style.display = 'none';
+        } else if (document.activeElement === passwordInput) {
+            requirementsList.style.display = 'block';
+        }
+    });
+</script>
+<!-- Update the style section at the bottom -->
+<style>
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-10px); }
+        75% { transform: translateX(10px); }
+    }
+    /* Update the requirements styling */
+    .password-requirements {
+        position: absolute;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        margin-top: 5px;
+        border: 1px solid rgba(0, 51, 102, 0.1);
+        font-size: 0.9rem;
+        z-index: 1000;
+        animation: fadeInUp 0.3s ease;
+        left: 0;
+        right: 0;
+        top: 100%;
+        width: 100%;
+    }
+    .password-requirements ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .password-requirements li {
+        margin: 8px 0;
+        color: #6c757d;
+        transition: all 0.3s ease;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    /* Update this selector to change both dot and text color */
+    .password-requirements li[data-requirement].valid {
+        color: #4CAF50;  /* Same green color as the dot */
+    }
+
+    .password-requirements li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #d1d1d1;  /* Light gray for inactive state */
+        transition: all 0.3s ease;
+    }
+    .password-requirements li[data-requirement].valid::before {
+        background-color: #4CAF50;  /* Green for valid state */
+        transform: translateY(-50%) scale(1.2);
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(5px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+<script>
+    // CAPTCHA functionality
+    function generateCaptcha() {
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        let captcha = '';
+        for (let i = 0; i < 6; i++) {
+            captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return captcha;
+    }
+
+    function refreshCaptcha() {
+        const captchaText = generateCaptcha();
+        document.getElementById('captcha').textContent = captchaText;
+        // Store captcha text for validation
+        document.getElementById('captcha').dataset.captcha = captchaText;
+    }
+
+    // Initialize captcha on page load
+    document.addEventListener('DOMContentLoaded', refreshCaptcha);
+
+    // Refresh button click handler
+    document.getElementById('refreshCaptcha').addEventListener('click', refreshCaptcha);
+
+    // Modify your existing form submission code
+    document.querySelector('.login-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errorDiv = document.querySelector('.error-message');
+        const successDiv = document.querySelector('.success-message');
+        const loginBtn = document.querySelector('.login-btn');
+        
+        // Validate CAPTCHA
+        const captchaInput = document.getElementById('captchaInput');
+        const correctCaptcha = document.getElementById('captcha').dataset.captcha;
+        
+        if (captchaInput.value !== correctCaptcha) {
+            errorDiv.textContent = 'Invalid CAPTCHA. Please try again.';
+            errorDiv.style.display = 'block';
+            errorDiv.classList.add('show');
+            refreshCaptcha();
+            captchaInput.value = '';
+            return;
+        }
+
+        try {
+                loginBtn.disabled = true;
+                loginBtn.textContent = 'Verifying...';
+                errorDiv.style.display = 'none';
+                successDiv.style.display = 'none';
+    
+                const response = await fetch('/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: e.target.username.value,
+                        password: e.target.password.value
+                    })
+                });
+    
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    errorDiv.textContent = data.error;
+                    errorDiv.style.display = 'block';
+                    errorDiv.classList.add('show');
+                    errorDiv.style.animation = 'shake 0.5s';
+                    setTimeout(() => errorDiv.style.animation = '', 500);
+                } else {
+                    successDiv.textContent = 'Login successful! Redirecting to dashboard...';
+                    successDiv.style.display = 'block';
+                    successDiv.classList.add('show');
+                    setTimeout(() => {
+                        window.location.href = '/admin/dashboard';
+                    }, 1500);
+                }
+            } catch (error) {
+                errorDiv.textContent = 'An error occurred. Please try again.';
+                errorDiv.style.display = 'block';
+                errorDiv.classList.add('show');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Login to Admin Panel';
+            }
+        });
+    </script>
+</body>
+</html>

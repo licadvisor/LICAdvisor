@@ -1,0 +1,128 @@
+.endowment-plans {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+.endowment-plans h1 {
+    text-align: center;
+    color: #004B87;
+    margin-bottom: 20px;
+    font-size: 2.8em;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.endowment-plans h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #004B87, #0077cc);
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    color: #666;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+.plan-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+.plan-header {
+    background: #004B87;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.plan-number {
+    font-weight: bold;
+}
+.uin {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+.plan-card h2 {
+    padding: 20px;
+    margin: 0;
+    color: #333;
+    font-size: 1.3em;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+.plan-content {
+    padding: 20px;
+}
+.plan-icon {
+    font-size: 2.5em;
+    color: #004B87;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.plan-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.plan-features ul li {
+    padding: 10px 0;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 25px;
+}
+.plan-features ul li:before {
+    content: "✓";
+    color: #004B87;
+    position: absolute;
+    left: 0;
+}
+.btn-plan-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    color: #004B87;
+    text-decoration: none;
+    border-top: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+.btn-plan-details:hover {
+    background: #004B87;
+    color: white;
+}
+.btn-plan-details i {
+    transition: transform 0.3s ease;
+}
+.btn-plan-details:hover i {
+    transform: translateX(5px);
+}
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,75,135,0.15);
+}
+@media (max-width: 768px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+}

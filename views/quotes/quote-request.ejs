@@ -1,0 +1,66 @@
+
+
+<div class="quote-request">
+    <div class="container">
+        <h1>Request a Quote</h1>
+        <p class="section-description">Fill in your details for personalized insurance plan options</p>
+
+        <div class="quote-form-wrapper">
+            <form id="quoteForm" action="/submit-quote" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name*</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number*</label>
+                        <div class="mobile-input-wrapper">
+                            <span class="country-code">+91</span>
+                            <input type="tel" id="mobile" name="mobile" placeholder="Enter 10 digit number" maxlength="10" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" name="email" 
+                               placeholder="example@domain.com"
+                               pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                               title="Please enter a valid email address (e.g., example@domain.com)"
+                               required>
+                        <span class="email-validation-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City*</label>
+                        <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="planInterest">Interested in Plan*</label>
+                    <select id="planInterest" name="planInterest" required>
+                        <option value="">Select Insurance Plan</option>
+                        <option value="endowment">Endowment Plans</option>
+                        <option value="moneyBack">Money Back Plans</option>
+                        <option value="wholeLife">Whole Life Plans</option>
+                        <option value="term">Term Insurance</option>
+                        <option value="pension">Pension Plans</option>
+                        <option value="ulip">ULIP Plans</option>
+                        <option value="microInsurance">Micro Insurance</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Additional Requirements (Optional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Share any specific requirements or questions..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Submit Quote Request
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/quote-request.js"></script>

@@ -1,0 +1,227 @@
+.policy-overview {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh; /* Ensures full viewport height coverage */
+}
+
+.policy-overview h1 {
+    text-align: center;
+    color: #004B87;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    position: relative; /* Added position relative */
+    z-index: 1; /* Ensure text stays above other elements */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.policy-overview h1 {
+    text-align: center;
+    color: #004B87;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+/* Add these styles for insurance subcategories */
+.insurance-subcategories {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.subcategory-link {
+    color: var(--primary-color);
+    padding: 12px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 8px;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.08);
+}
+
+.subcategory-link i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.subcategory-link:hover {
+    background: linear-gradient(135deg, rgba(0, 51, 102, 0.08) 0%, rgba(0, 51, 102, 0.05) 100%);
+    transform: translateX(8px);
+    color: var(--secondary-color);
+}
+
+.subcategory-link:hover i {
+    transform: scale(1.1);
+}
+
+/* Update overview card for insurance plans */
+.overview-card {
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 51, 102, 0.1);
+    transition: all 0.3s ease;
+}
+
+.overview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 51, 102, 0.15);
+    background: white;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.overview-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,75,135,0.15);
+    border-color: #004B87;
+}
+
+.card-icon {
+    font-size: 3em;
+    color: #004B87;
+    margin-bottom: 25px;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.overview-card:hover .card-icon {
+    transform: scale(1.2) rotate(5deg);
+    color: #003666;
+}
+
+.overview-card:hover h2 {
+    color: #004B87;
+}
+
+.overview-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #004B87;
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+}
+
+.overview-card:hover::before {
+    transform: scaleX(1);
+}
+
+.btn-explore {
+    display: block;
+    text-align: center;
+    padding: 12px 20px;
+    background: #004B87;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-explore:hover {
+    background: #003666;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,75,135,0.2);
+}
+
+.btn-explore::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-explore:hover::after {
+    left: 100%;
+}
+.overview-card h2 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.overview-card p {
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.overview-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.overview-card ul li {
+    padding: 8px 0;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 20px;
+}
+
+.overview-card ul li:before {
+    content: "•";
+    color: #004B87;
+    position: absolute;
+    left: 0;
+}
+
+.btn-explore {
+    display: block;
+    text-align: center;
+    padding: 12px 20px;
+    background: #004B87;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.btn-explore:hover {
+    background: #003666;
+}
+
+@media (max-width: 768px) {
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .policy-overview h1 {
+        font-size: 2em;
+    }
+}

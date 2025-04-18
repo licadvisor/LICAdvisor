@@ -1,0 +1,208 @@
+.settings-container {
+    display: grid;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.settings-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.settings-card h2 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.settings-card h2 i {
+    color: var(--secondary-color);
+}
+.settings-form {
+    display: grid;
+    gap: 20px;
+}
+.form-group {
+    display: grid;
+    gap: 8px;
+}
+.form-group label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.form-group input {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+}
+.settings-form button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+.settings-form button:hover {
+    background: #004080;
+    transform: translateY(-2px);
+}
+/* Add popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+    min-width: 300px;
+}
+.popup.success {
+    border-left: 4px solid #4CAF50;
+}
+.popup.error {
+    border-left: 4px solid #f44336;
+}
+.popup-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* Update success icon animation */
+@keyframes pulseSuccess {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 15px rgba(76, 175, 80, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+.popup.success .popup-icon {
+    animation: pulseSuccess 1.5s infinite;
+    border-radius: 50%;
+    display: inline-block;
+    color: #4CAF50;
+    text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+.popup.success .popup-icon {
+    color: #4CAF50;
+}
+/* Modify popup styles for error state */
+.popup.error .popup-button {
+    background-color: #f44336;
+}
+
+.popup.error .popup-button:hover {
+    background-color: #d32f2f;
+}
+
+/* Add pulsing animation for error icon */
+@keyframes pulseError {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 15px rgba(244, 67, 54, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+    }
+}
+
+.popup.error .popup-icon {
+    animation: pulseError 1.5s infinite;
+    border-radius: 50%;
+    display: inline-block;
+    color: #f44336;
+}
+.popup-message {
+    margin: 10px 0;
+    font-size: 16px;
+}
+.popup-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.popup-button:hover {
+    background-color: #45a049;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+.notification.success {
+    background: #10B981;
+    color: white;
+}
+.notification.error {
+    background: #EF4444;
+    color: white;
+}
+.notification.show {
+    transform: translateX(0);
+}

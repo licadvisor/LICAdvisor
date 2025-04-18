@@ -1,0 +1,76 @@
+
+
+<div class="premium-results">
+    <div class="container">
+        <h1>Premium Calculation Results</h1>
+        
+        <div class="results-wrapper">
+            <div class="plan-details">
+                <h2>Selected Plan Details</h2>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="label">Plan Type</span>
+                        <span class="value" id="selectedPlan"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Age</span>
+                        <span class="value" id="customerAge"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Sum Assured</span>
+                        <span class="value" id="sumAssuredValue"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Policy Term</span>
+                        <span class="value" id="policyTerm"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Payment Mode</span>
+                        <span class="value" id="paymentFrequency"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="premium-breakdown">
+                <h2>Premium Breakdown</h2>
+                <div class="premium-details">
+                    <div class="premium-item">
+                        <span class="label">Basic Premium</span>
+                        <span class="value" id="basicPremium"></span>
+                    </div>
+                    <div class="premium-item total">
+                        <span class="label">Total Premium</span>
+                        <span class="value" id="totalPremium"></span>
+                    </div>
+                </div>
+                <div class="disclaimer">
+                    <p><i class="fas fa-info-circle"></i> While this provides more realistic estimates, for exact premiums, customers should always consult LIC agent (MD TAIAB KHAN) , as actual premiums may vary based on additional factors and current rates.</p>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <a href="/raise-quote" class="quote-btn">
+                    <i class="fas fa-file-invoice"></i> Raise a Quote
+                </a>
+                <a href="/calculator" class="recalculate-btn">
+                    <i class="fas fa-calculator"></i> New Calculation
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const results = JSON.parse(localStorage.getItem('premiumResults'));
+    if (results) {
+        document.getElementById('selectedPlan').textContent = results.planType;
+        document.getElementById('customerAge').textContent = results.age + ' years';
+        document.getElementById('sumAssuredValue').textContent = '₹' + results.sumAssured.toLocaleString('en-IN');
+        document.getElementById('policyTerm').textContent = results.term + ' years';
+        document.getElementById('paymentFrequency').textContent = results.paymentMode;
+        document.getElementById('basicPremium').textContent = '₹' + Math.round(results.premium).toLocaleString('en-IN');
+        document.getElementById('totalPremium').textContent = '₹' + Math.round(results.premium).toLocaleString('en-IN');
+    }
+});
+</script>
+

@@ -1,0 +1,60 @@
+.money-back-plans {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.money-back-plans h1 {
+    text-align: center;
+    color: #004B87;
+    margin-bottom: 20px;
+    font-size: 2.8em;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.money-back-plans h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #004B87, #0077cc);
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    color: #666;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.plan-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.plan-header {
+    background: #004B87;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Management - LIC Advisor</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <%- include('partials/sidebar') %>
+        
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Client Management</h1>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search clients...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <div class="filter-options">
+                        <span class="filter-chip active" data-filter="all">All Clients</span>
+                        <span class="filter-chip" data-filter="active">Active</span>
+                        <span class="filter-chip" data-filter="pending">Pending</span>
+                        <span class="filter-chip" data-filter="new">New</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="clients-container">
+                <div class="clients-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Policy Type</th>
+                                <th>Status</th>
+                                <th>Created Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="clientsTableBody">
+                            <!-- Data will be populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be added dynamically -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add this modal for viewing client details -->
+    <div id="clientModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Client Details</h2>
+            <div id="clientDetails"></div>
+        </div>
+    </div>
+
+    <script src="/js/admin-clients.js"></script>
+</body>
+</html>

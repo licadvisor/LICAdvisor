@@ -1,0 +1,1109 @@
+.lic-774 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.lic-774__header {
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #004d99, #0073e6);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.lic-774__title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.lic-774__meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1.1rem;
+}
+
+.lic-774__intro {
+    text-align: left;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 2rem auto;
+    color: #444;
+    padding: 1rem 2rem;
+    background: #f8f9fa;
+    border-left: 4px solid #004d99;
+    border-radius: 0 15px 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    max-width: 95%;
+}
+
+.lic-774__highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.lic-774__highlight-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.lic-774__highlight-card:hover {
+    transform: translateY(-5px);
+}
+
+.lic-774__highlight-card i {
+    font-size: 2.5rem;
+    color: #004d99;
+    margin-bottom: 1rem;
+}
+
+.lic-774__eligibility {
+    margin: 4rem 0;
+}
+
+.lic-774__eligibility-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 2rem;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.lic-774__eligibility-table th {
+    background: #004d99;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 1.2rem 2rem;
+    text-transform: capitalize;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.lic-774__eligibility-table th:not(:last-child) {
+    border-right: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.lic-774__eligibility-table th:first-child {
+    background: linear-gradient(135deg, #004d99, #0073e6);
+}
+
+.lic-774__eligibility-table th:last-child {
+    background: linear-gradient(135deg, #0073e6, #004d99);
+}
+
+.lic-774__eligibility-table th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lic-774__eligibility-table th::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.lic-774__eligibility-table th:hover::before {
+    transform: translateX(100%);
+}
+
+.lic-774__eligibility-table td {
+    padding: 1.2rem 2rem;
+    border: 1px solid #eee;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.lic-774__eligibility-table td:first-child {
+    font-weight: 500;
+    color: #004d99;
+    width: 30%;
+}
+
+.lic-774__eligibility-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.lic-774__eligibility-table tr:hover td:first-child {
+    color: #ff6b00;
+}
+
+.lic-774__benefits {
+    margin: 4rem 0;
+}
+
+.lic-774__benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.lic-774__benefit-card h3 {
+    color: #004d99;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.lic-774__benefits-list {
+    list-style: none;
+    padding-left: 2rem;
+}
+
+.lic-774__benefits-list li {
+    margin: 0.8rem 0;
+    position: relative;
+}
+
+.lic-774__benefits-list li::before {
+    content: "•";
+    color: #004d99;
+    position: absolute;
+    left: -1.5rem;
+}
+
+.lic-774__premium-rates {
+    margin: 4rem 0;
+    position: relative;
+}
+
+.lic-774__premium-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.lic-774__premium-table th {
+    background: #004d99;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1.2rem;
+    text-align: center;
+}
+
+.lic-774__premium-table td {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+}
+
+.lic-774__premium-table td:first-child {
+    font-weight: 500;
+    background: #f8f9fa;
+    color: #004d99;
+}
+
+.lic-774__premium-table tr:hover td {
+    background-color: #fff5eb;
+}
+
+.lic-774__premium-table tr:hover td:first-child {
+    background: #ff6b00;
+    color: white;
+}
+
+.lic-774__notes {
+    background: #fff5eb;
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    margin: 4rem 0;
+    position: relative;
+    border-left: 4px solid #ff6b00;
+}
+
+.lic-774__notes h3 {
+    color: #ff6b00;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.lic-774__notes-list {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.lic-774__notes-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.lic-774__notes-list li::before {
+    content: "!";
+    position: absolute;
+    left: 0;
+    color: #ff6b00;
+    font-weight: bold;
+}
+
+.lic-774__cta {
+    background: #004d99;
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    margin: 4rem 0;
+}
+
+.lic-774__cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.lic-774__cta p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.lic-774__cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.lic-774__cta-button {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.lic-774__cta-button--primary {
+    background: #ff6b00;
+    color: white;
+}
+
+.lic-774__cta-button--secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+/* Section Headers */
+.lic-774__highlights h2,
+.lic-774__benefits h2,
+.lic-774__eligibility h2,
+.lic-774__premium-rates h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #004d99;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.lic-774__highlights h2::after,
+.lic-774__benefits h2::after,
+.lic-774__eligibility h2::after,
+.lic-774__premium-rates h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #004d99, #0073e6);
+    border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .lic-774__meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .lic-774__title h1 {
+        font-size: 2rem;
+    }
+
+    .lic-774__eligibility-table,
+    .lic-774__premium-table {
+        font-size: 0.9rem;
+    }
+
+    .lic-774__eligibility-table th,
+    .lic-774__eligibility-table td,
+    .lic-774__premium-table th,
+    .lic-774__premium-table td {
+        padding: 0.8rem;
+    }
+}
+
+.lic-774__benefit-details {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+}
+
+.lic-774__benefit-details h4 {
+    color: #004d99;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.lic-774__benefit-option {
+    margin-bottom: 1.5rem;
+}
+
+.lic-774__benefit-option h5 {
+    color: #ff6b00;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.lic-774__benefit-option ul {
+    list-style: none;
+    padding-left: 1.2rem;
+}
+
+.lic-774__benefit-option ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #666;
+}
+
+.lic-774__benefit-option ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #ff6b00;
+}
+
+.lic-774__premium-options {
+    margin: 4rem 0;
+}
+
+.lic-774__premium-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.lic-774__premium-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.lic-774__premium-card:hover {
+    transform: translateY(-5px);
+}
+
+.lic-774__premium-card h3 {
+    color: #004d99;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.lic-774__premium-card h3 i {
+    color: #ff6b00;
+}
+
+.lic-774__premium-card ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.lic-774__premium-card ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #666;
+}
+
+.lic-774__premium-card ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #ff6b00;
+    font-weight: bold;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+    .lic-774__benefit-details {
+        padding: 1rem;
+    }
+    
+    .lic-774__premium-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.lic-774__why-choose {
+    background: linear-gradient(135deg, #004d99, #0073e6);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    margin: 4rem 0;
+}
+
+.lic-774__why-choose h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.lic-774__why-choose h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.lic-774__why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.lic-774__why-choose-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lic-774__why-choose-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    z-index: 1;
+    transition: transform 0.6s;
+    transform: translateX(-100%);
+}
+
+.lic-774__why-choose-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.lic-774__why-choose-card:hover::before {
+    transform: translateX(100%);
+}
+
+.lic-774__why-choose-card i {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.lic-774__why-choose-card:hover i {
+    transform: scale(1.2) rotate(10deg);
+    color: #fff;
+}
+
+.lic-774__why-choose-card h3 {
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.lic-774__why-choose-card p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .lic-774__why-choose {
+        padding: 3rem 1.5rem;
+    }
+    
+    .lic-774__why-choose-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.lic-774__rider-benefits {
+    padding-top: 2rem;
+    margin: 4rem 0;
+    position: relative;
+}
+
+.lic-774__rider-benefits h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #004d99;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.lic-774__rider-benefits h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #004d99, #0073e6);
+    border-radius: 2px;
+}
+
+.rider-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.lic-774__rider-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.lic-774__rider-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #004d99, #0073e6);
+}
+
+.lic-774__rider-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.lic-774__rider-card h3 {
+    color: #004d99;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.lic-774__rider-card h3 i {
+    color: #ff6b00;
+}
+
+.lic-774__rider-card .rider-uin,
+.lic-774__rider-card .rider-feature {
+    color: #ff6b00;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.lic-774__rider-card ul {
+    list-style: none;
+    padding-left: 1.5rem;
+}
+
+.lic-774__rider-card ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #666;
+}
+
+.lic-774__rider-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #ff6b00;
+}
+
+.lic-774__rider-card ul ul {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.lic-774__rider-card ul ul li {
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.lic-774__rider-card ul ul li::before {
+    content: '•';
+}
+
+@media (max-width: 768px) {
+    .rider-cards-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .lic-774__rider-card {
+        padding: 1.5rem;
+    }
+}
+/* Loan Facility Section */
+.lic-774__loan-facility {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 4rem 2rem;
+    margin: 4rem 0;
+    border-radius: 20px;
+}
+
+.lic-774__loan-facility h2 {
+    text-align: center;
+    color: #004d99;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.lic-774__loan-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.lic-774__loan-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.lic-774__loan-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.lic-774__loan-card:hover {
+    transform: translateY(-5px);
+}
+
+.loan-card-header {
+    background: linear-gradient(135deg, #004d99, #0073e6);
+    color: white;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.loan-card-header i {
+    font-size: 1.5rem;
+}
+
+.loan-card-body {
+    padding: 2rem;
+}
+
+.loan-availability {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.loan-card-body h4 {
+    color: #004d99;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.loan-features {
+    list-style: none;
+    padding: 0;
+}
+
+.loan-features li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.8rem;
+    color: #666;
+}
+
+.loan-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745;
+}
+
+/* Premium Rebates Section */
+.lic-774__rebates {
+    padding: 4rem 2rem;
+    margin: 4rem 0;
+    background: linear-gradient(135deg, #004d99, #0073e6);
+    border-radius: 20px;
+    color: white;
+}
+
+.lic-774__rebate-intro {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.lic-774__rebate-intro h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.lic-774__rebate-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.rebate-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.rebate-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.rebate-icon {
+    font-size: 2rem;
+    color: #ff6b00;
+    margin-bottom: 1.5rem;
+}
+
+.rebate-card h4 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.lic-774__rebate-cta {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .lic-774__loan-facility,
+    .lic-774__rebates {
+        padding: 2rem 1rem;
+    }
+    
+    .lic-774__loan-cards,
+    .lic-774__rebate-cards {
+        grid-template-columns: 1fr;
+    }
+}
+/* Advisor Section */
+.lic-774__advisor {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+    border-radius: 20px;
+    margin: 4rem 0;
+}
+
+.advisor-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.advisor-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.advisor-header h2 {
+    font-size: 2.2rem;
+    color: #004d99;
+    margin-bottom: 1rem;
+}
+
+.advisor-header h2 span {
+    color: #ff6b00;
+}
+
+.advisor-header p {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.advisor-profile {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.advisor-image {
+    flex-shrink: 0;
+}
+
+.advisor-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #004d99;
+    padding: 5px;
+}
+
+.advisor-info {
+    flex-grow: 1;
+}
+
+.advisor-info h3 {
+    font-size: 1.8rem;
+    color: #004d99;
+    margin-bottom: 0.5rem;
+}
+
+.advisor-designation {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.advisor-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6b00;
+}
+
+.stat-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.advisor-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.advisor-btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.advisor-btn.primary {
+    background: #004d99;
+    color: white;
+}
+
+.advisor-btn.secondary {
+    background: #ff6b00;
+    color: white;
+}
+
+.advisor-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .advisor-profile {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .advisor-stats {
+        justify-content: center;
+    }
+
+    .advisor-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .advisor-btn {
+        text-align: center;
+    }
+}
+/* Move these styles outside of media query, place them after the header styles */
+.lic-774__header {
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, #004d99, #0073e6);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Add brochure styles here */
+.lic-774__brochure {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.brochure-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.brochure-btn--view {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.brochure-btn--download {
+    background: #ff6b00;
+    color: white;
+    border: 1px solid #ff6b00;
+}
+
+.brochure-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.brochure-btn--view:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.brochure-btn--download:hover {
+    background: #ff7d1a;
+}
+
+/* ... rest of the existing code ... */
+/* Add after your brochure button styles */
+.brochure-btn--download {
+    position: relative;
+    overflow: hidden;
+}
+
+.brochure-btn--download.downloading {
+    pointer-events: none;
+    background: #004d99;
+}
+
+.download-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(120deg, #004d99, #0073e6);
+    transition: width 0.3s ease;
+    z-index: 1;
+}
+
+.brochure-btn--download span {
+    position: relative;
+    z-index: 2;
+}
+
+.download-text {
+    position: relative;
+    z-index: 2;
+}

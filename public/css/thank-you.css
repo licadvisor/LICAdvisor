@@ -1,0 +1,202 @@
+.thank-you {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, #e8f0fe 0%, #f5f7fa 100%);
+    min-height: 100vh;
+}
+
+.thank-you-wrapper {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+.contact-link {
+    color: #004B87;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact-link:hover {
+    color: #003666;
+    transform: translateY(-2px);
+}
+
+.contact-link i {
+    margin-right: 8px;
+}
+.success-icon {
+    position: relative;
+    font-size: 4em;
+    color: #28a745;
+    margin-bottom: 20px;
+    animation: iconPulse 2s infinite;
+}
+.success-icon::before {
+    width: 70px;
+    height: 70px;
+    background: rgba(40, 167, 69, 0.2);
+    animation: pulse1 2s infinite;
+}
+.success-icon::after {
+    width: 50px;
+    height: 50px;
+    background: rgba(40, 167, 69, 0.3);
+    animation: pulse2 2s infinite;
+}
+.success-icon::before,
+.success-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+}
+.success-icon::before {
+    width: 100px;
+    height: 100px;
+    background: rgba(40, 167, 69, 0.2);
+    animation: pulse1 2s infinite;
+}
+.success-icon::after {
+    width: 80px;
+    height: 80px;
+    background: rgba(40, 167, 69, 0.3);
+    animation: pulse2 2s infinite;
+}
+.success-icon::before,
+.success-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: -1;
+}
+.success-icon::before {
+    width: 100px;
+    height: 100px;
+    background: rgba(40, 167, 69, 0.2);
+    animation: pulse1 2s infinite;
+}
+.success-icon::after {
+    width: 80px;
+    height: 80px;
+    background: rgba(40, 167, 69, 0.3);
+    animation: pulse2 2s infinite;
+}
+@keyframes iconPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes pulse1 {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+@keyframes pulse2 {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.8);
+        opacity: 0;
+    }
+}.thank-you h1 {
+    color: #003366;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+.message {
+    color: #333;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.sub-message {
+    color: #666;
+    margin-bottom: 30px;
+}
+.contact-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+.contact-details {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+}
+.contact-details p {
+    color: #004B87;
+}
+.contact-details i {
+    margin-right: 8px;
+}
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 30px;
+}
+.home-btn, .calculator-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.home-btn {
+    background: #004B87;
+    color: white;
+}
+.calculator-btn {
+    background: transparent;
+    border: 2px solid #004B87;
+    color: #004B87;
+}
+.home-btn:hover {
+    background: #003666;
+}
+.calculator-btn:hover {
+    background: #004B87;
+    color: white;
+}
+@media (max-width: 768px) {
+    .thank-you-wrapper {
+        margin: 20px;
+        padding: 30px 20px;
+    }
+.contact-details {
+        flex-direction: column;
+        gap: 15px;
+    }
+.action-buttons {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,133 @@
+.micro-insurance-plans {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.micro-insurance-plans h1 {
+    text-align: center;
+    color: #004B87;
+    margin-bottom: 20px;
+    font-size: 2.8em;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.micro-insurance-plans h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #004B87, #0077cc);
+    border-radius: 2px;
+}
+
+.section-description {
+    text-align: center;
+    color: #666;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin: 0 auto 50px;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+    width: 100%;
+}
+
+.plan-header {
+    background: #004B87;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plan-content {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.plan-icon {
+    font-size: 3em;
+    color: #004B87;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.plan-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plan-features ul li {
+    padding: 10px 0;
+    padding-left: 25px;
+    border-bottom: 1px solid #eee;
+    color: #666;
+    position: relative;
+}
+
+.plan-features ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #004B87;
+    font-weight: bold;
+}
+.btn-plan-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    background: #004B87;
+    color: white;
+    text-decoration: none;
+    margin-top: auto;
+    transition: all 0.3s ease;
+}
+
+.btn-plan-details:hover {
+    background: #003666;
+}
+
+.btn-plan-details i {
+    margin-left: 10px;
+}
+
+@media (max-width: 1200px) {
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Add these SEO meta tags -->
+    <meta name="description" content="<%= typeof metaDescription !== 'undefined' ? metaDescription : 'Professional LIC Advisor services for your insurance needs. Get expert guidance on LIC policies, pension plans, and insurance solutions.' %>">
+    <meta name="keywords" content="LIC Advisor, insurance advisor, life insurance, pension plans, LIC policies, insurance consultation">
+    <meta name="author" content="MD TAIAB KHAN">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph tags for social sharing -->
+    <meta property="og:title" content="<%= typeof title !== 'undefined' ? title + ' - ' : '' %>LIC Advisor">
+    <meta property="og:description" content="<%= typeof metaDescription !== 'undefined' ? metaDescription : 'Professional LIC Advisor services for your insurance needs.' %>">
+    <meta property="og:image" content="/images/lic-logo.png">
+    <meta property="og:url" content="https://yourdomain.com<%= typeof currentPath !== 'undefined' ? currentPath : '' %>">
+    
+    <title><%= typeof title !== 'undefined' ? title + ' - ' : '' %>LIC Advisor</title>
+    
+    <!-- Core Stylesheets -->
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Page Specific Styles -->
+    <% if (typeof additionalCSS !== 'undefined') { %>
+        <% additionalCSS.forEach(function(css) { %>
+            <link rel="stylesheet" href="/css/<%= css %>.css">
+        <% }); %>
+    <% } %>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    
+    <main>
+        <%- body %>
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <script src="/js/main.js"></script>
+    <script>
+        document.querySelector('.footer-newsletter button').addEventListener('click', async function(e) {
+            e.preventDefault();
+            const button = this;
+            const input = button.previousElementSibling;
+            const email = input.value;
+
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+
+            // Add loading state
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+
+            try {
+                const response = await fetch('/newsletter/subscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('Successfully subscribed to newsletter!');
+                    input.value = '';
+                } else {
+                    alert(data.message || 'Failed to subscribe. Please try again.');
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again.');
+            } finally {
+                // Reset button state
+                button.disabled = false;
+                button.textContent = originalText;
+            }
+        });
+    </script>
+</body>
+</html>

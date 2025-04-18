@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - LIC Advisor</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Add this in the head section -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/admin-logout.js"></script>
+
+    <!-- Update the logout button -->
+    <div class="sidebar-footer">
+        <a href="javascript:void(0)" class="logout-btn" onclick="confirmLogout()">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </a>
+    </div>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="/images/lic-logo.png" alt="LIC Logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="/admin/dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/quotes">
+                        <i class="fas fa-quote-right"></i>
+                        <span>Quote Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/contacts">
+                        <i class="fas fa-address-book"></i>
+                        <span>Contact Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/clients">
+                        <i class="fas fa-users"></i>
+                        <span>Client Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/policies">
+                        <i class="fas fa-file-contract"></i>
+                        <span>Policy Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/claims">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <span>Claims</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="javascript:void(0)" class="logout-btn" onclick="confirmLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Dashboard Overview</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-profile">
+                        <span>Welcome, Admin</span>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Update the stats cards section -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <i class="fas fa-quote-right"></i>
+                    <div class="stat-info">
+                        <h3>Quote Requests</h3>
+                        <p class="stat-number" id="quoteCount">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-envelope"></i>
+                    <div class="stat-info">
+                        <h3>Messages</h3>
+                        <p class="stat-number" id="messageCount">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-users"></i>
+                    <div class="stat-info">
+                        <h3>Total Requests</h3>
+                        <p class="stat-number" id="totalCount">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- In the recent activities section -->
+            <div class="recent-activities">
+                <h3>Recent Activities</h3>
+                <div class="activities-list">
+                    <% recentActivities.forEach(activity => { %>
+                        <!-- In your recent activities section, update each activity item to include data attributes -->
+                        <!-- Update the activity item to include phone data -->
+                        <!-- Update the activity item data attributes -->
+                        <div class="activity-item" 
+                            data-email="<%= activity.email %>" 
+                            data-message="<%= activity.message || activity.planInterest || 'No message available' %>"
+                            data-phone="<%= activity.phone || activity.mobile || 'Not provided' %>">
+                            <div class="activity-icon">
+                                <i class="<%= activity.planInterest ? 'fas fa-quote-right' : 'fas fa-envelope' %>"></i>
+                            </div>
+                            <div class="activity-details">
+                                <h4><%= activity.name %></h4>
+                                <p><%= activity.planInterest ? 'Quote Request' : 'Contact Message' %></p>
+                                <small><%= new Date(activity._id.getTimestamp()).toLocaleString() %></small>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/admin-dashboard.js"></script>
+    <!-- Add this before closing body tag -->
+    <div class="activity-modal" id="activityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Activity Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Fields will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Update the modal script to handle both phone and mobile fields -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('activityModal');
+        const modalClose = modal.querySelector('.modal-close');
+        
+        document.querySelectorAll('.activity-item').forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', function() {
+                const data = {
+                    name: this.querySelector('h4').textContent,
+                    type: this.querySelector('p').textContent,
+                    time: this.querySelector('small').textContent,
+                    email: this.dataset.email,
+                    phone: this.dataset.phone,
+                    message: this.dataset.message
+                };
+    
+                const modalBody = modal.querySelector('.modal-body');
+                modalBody.innerHTML = `
+                    <div class="modal-field">
+                        <label>Name</label>
+                        <p>${data.name}</p>
+                    </div>
+                    <div class="modal-field">
+                        <label>Type</label>
+                        <p>${data.type}</p>
+                    </div>
+                    <div class="modal-field">
+                        <label>Email</label>
+                        <p><a href="mailto:${data.email}" style="color: var(--primary-color); text-decoration: none;">${data.email}</a></p>
+                    </div>
+                    <div class="modal-field">
+                        <label>${data.type === 'Quote Request' ? 'Mobile' : 'Phone'}</label>
+                        <p>${data.phone !== 'Not provided' ? 
+                            `<a href="tel:${data.phone}" style="color: var(--primary-color); text-decoration: none;">${data.phone}</a>` : 
+                            'Not provided'}</p>
+                    </div>
+                    <div class="modal-field">
+                        <label>Time</label>
+                        <p>${data.time}</p>
+                    </div>
+                    <div class="modal-field">
+                        <label>Message/Details</label>
+                        <p>${data.message}</p>
+                    </div>
+                `;
+    
+                modal.classList.add('show');
+            });
+        });
+    
+        // Close modal handlers remain the same
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+    
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    });
+    </script>
+    <!-- Add this before the closing body tag -->
+    <script>
+    function refreshRecentActivities() {
+        fetch('/admin/recent-activities')
+            .then(response => response.json())
+            .then(data => {
+                const activitiesList = document.querySelector('.activities-list');
+                activitiesList.innerHTML = data.activities.map(activity => `
+                    <div class="activity-item" 
+                        data-email="${activity.email}" 
+                        data-message="${activity.message || activity.planInterest || 'No message available'}"
+                        data-phone="${activity.phone || activity.mobile || 'Not provided'}">
+                        <div class="activity-icon">
+                            <i class="${activity.planInterest ? 'fas fa-quote-right' : 'fas fa-envelope'}"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>${activity.name}</h4>
+                            <p>${activity.planInterest ? 'Quote Request' : 'Contact Message'}</p>
+                            <small>${new Date(activity._id).toLocaleString()}</small>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Reattach click events for modals
+                attachModalEvents();
+            })
+            .catch(error => console.error('Error refreshing activities:', error));
+    }
+    
+    // Function to reattach modal events after refresh
+    function attachModalEvents() {
+        document.querySelectorAll('.activity-item').forEach(item => {
+            item.style.cursor = 'pointer';
+            item.addEventListener('click', function() {
+                // Your existing modal click handler code
+                const data = {
+                    name: this.querySelector('h4').textContent,
+                    type: this.querySelector('p').textContent,
+                    time: this.querySelector('small').textContent,
+                    email: this.dataset.email,
+                    phone: this.dataset.phone,
+                    message: this.dataset.message
+                };
+                
+                const modalBody = document.querySelector('.modal-body');
+                // Your existing modal content population code
+                // ...
+            });
+        });
+    }
+    
+    // Set up auto-refresh every 50 seconds
+    setInterval(refreshRecentActivities, 50000); // 50000 ms = 50 seconds
+    </script>
+</body>
+</html>

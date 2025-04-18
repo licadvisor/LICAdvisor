@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - LIC Advisor</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+    <link rel="stylesheet" href="/css/analytics-dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Add these Chart.js scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    
+    <!-- Your existing scripts -->
+    <script src="/js/analytics-dashboard.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <%- include('./partials/sidebar') %>
+        
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Analytics Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-profile">
+                        <span>Welcome, Admin</span>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="analytics-grid">
+                <div class="analytics-card visitors">
+                    <h3>
+                        <i class="fas fa-users"></i>
+                        Visitor Statistics
+                    </h3>
+                    <div class="stat-summary">
+                        Total: <span id="totalVisitors">0</span>
+                    </div>
+                    <canvas id="visitorChart"></canvas>
+                </div>
+                
+                <div class="analytics-card conversion">
+                    <h3>
+                        <i class="fas fa-chart-pie"></i>
+                        Conversion Rate
+                    </h3>
+                    <div class="stat-summary">
+                        Rate: <span id="conversionRate">0</span>%
+                    </div>
+                    <canvas id="conversionChart"></canvas>
+                </div>
+                
+                <div class="analytics-card geography">
+                    <h3>
+                        <i class="fas fa-globe-asia"></i>
+                        Geographic Distribution
+                    </h3>
+                    <div class="stat-summary">
+                        Cities: <span id="totalCities">0</span>
+                    </div>
+                    <canvas id="geoChart"></canvas>
+                </div>
+                
+                <div class="analytics-card income">
+                    <h3>
+                        <i class="fas fa-rupee-sign"></i>
+                        Income Overview
+                    </h3>
+                    <div class="stat-summary">
+                        Total: ₹<span id="totalIncome">0</span>
+                    </div>
+                    <canvas id="incomeChart"></canvas>
+                </div>
+                
+                <div class="analytics-card quick-stats">
+                    <h3><i class="fas fa-bolt"></i> Quick Stats</h3>
+                    <canvas id="quickStatsChart"></canvas>
+                </div>
+    
+                <div class="analytics-card policy-performance">
+                    <h3><i class="fas fa-chart-radar"></i> Policy Performance</h3>
+                    <canvas id="policyPerformanceChart"></canvas>
+                </div>
+    
+                <div class="analytics-card demographics">
+                    <h3><i class="fas fa-users"></i> Customer Demographics</h3>
+                    <canvas id="demographicsChart"></canvas>
+                </div>
+    
+                <div class="analytics-card premium-trends">
+                    <h3><i class="fas fa-money-bill-trend-up"></i> Premium Collection Trends</h3>
+                    <canvas id="premiumTrendsChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/analytics-dashboard.js"></script>
+</body>
+</html>

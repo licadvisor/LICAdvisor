@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Requests - LIC Advisor</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+    <link rel="stylesheet" href="/css/admin-quotes.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="/images/lic-logo.png" alt="LIC Logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="/admin/dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/admin/quotes">
+                        <i class="fas fa-quote-right"></i>
+                        <span>Quote Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/contacts">
+                        <i class="fas fa-address-book"></i>
+                        <span>Contact Messages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/clients">
+                        <i class="fas fa-users"></i>
+                        <span>Client Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/policies">
+                        <i class="fas fa-file-contract"></i>
+                        <span>Policy Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/claims">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <span>Claims</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="/admin/logout" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Quote Requests</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Search requests...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="quotes-container">
+                <div class="quotes-filters">
+                    <select id="sortFilter">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                </div>
+
+                <div class="quotes-list" id="quotesList">
+                    <!-- Quotes will be loaded here -->
+                </div>
+
+                <div class="quotes-pagination" id="quotesPagination">
+                    <!-- Pagination will be added here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/js/admin-quotes.js"></script>
+</body>
+</html>

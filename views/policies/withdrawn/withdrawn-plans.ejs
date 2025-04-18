@@ -1,0 +1,148 @@
+
+
+<div class="withdrawn-plans">
+    <div class="container">
+        <h1>Withdrawn Plans</h1>
+        <p class="section-description">Archive of previously available insurance plans</p>
+        
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">All Plans</button>
+            <button class="filter-btn" data-category="endowment">Endowment</button>
+            <button class="filter-btn" data-category="money-back">Money Back</button>
+            <button class="filter-btn" data-category="ulip">ULIP</button>
+            <button class="filter-btn" data-category="pension">Pension</button>
+            <button class="filter-btn" data-category="term">Term</button>
+            <button class="filter-btn" data-category="riders">Riders</button>
+            <button class="filter-btn" data-category="health">Health</button>
+            <button class="filter-btn" data-category="micro">Micro Insurance</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="planSearch" placeholder="Search plans...">
+            <i class="fas fa-search"></i>
+        </div>
+
+        <div class="plans-grid">
+            <!-- Plans will be dynamically populated here -->
+        </div>
+    </div>
+</div>
+
+<script>
+const plansData = [
+    { name: "LIC's Dhan VRIDDHI", number: "869", uin: "512N362V02", category: "endowment" },
+    { name: "LIC's New Jeevan Shanti", number: "858", uin: "512N338V06", category: "pension" },
+    { name: "LIC Jeevan Dhara II", number: "872", uin: "512N364V01", category: "pension" },
+    { name: "LIC's Saral Pension", number: "862", uin: "512N342V04", category: "pension" },
+    { name: "LIC's Jeevan Akshay-VII", number: "857", uin: "512N337V06", category: "pension" },
+    { name: "LIC's NIVESH PLUS", number: "849", uin: "512L317V01", category: "ulip" },
+    { name: "LIC's SIIP", number: "852", uin: "512L334V01", category: "ulip" },
+    { name: "LIC's New Pension Plus", number: "867", uin: "512L347V01", category: "pension" },
+    { name: "LIC's Index Plus", number: "873", uin: "512L354V01", category: "ulip" },
+    { name: "LIC's NEW ENDOWMENT PLUS", number: "935", uin: "512L301V02", category: "ulip" },
+    { name: "LIC's Bhagya Lakshmi", number: "939", uin: "512N292V04", category: "endowment" },
+    { name: "LIC's New Jeevan Mangal", number: "940", uin: "512N287V04", category: "endowment" },
+    { name: "LIC's Micro Bachat Plan", number: "951", uin: "512N329V02", category: "micro" },
+    { name: "LIC's Bima Jyoti", number: "860", uin: "512N339V02", category: "endowment" },
+    { name: "LIC's Bima Ratna", number: "864", uin: "512N345V01", category: "endowment" },
+    { name: "LIC's Dhan Sanchay", number: "865", uin: "512N346V01", category: "endowment" },
+    { name: "LIC's Jeevan Azad", number: "868", uin: "512N348V01", category: "endowment" },
+    { name: "LIC's New Endowment Plan", number: "914", uin: "512N277V02", category: "endowment" },
+    { name: "LIC's New Jeevan Anand", number: "915", uin: "512N279V02", category: "endowment" },
+    { name: "LIC's Single Premium Endowment Plan", number: "917", uin: "512N283V02", category: "endowment" },
+    { name: "LIC's Jeevan Lakshya", number: "933", uin: "512N297V02", category: "endowment" },
+    { name: "LIC's Jeevan Labh", number: "936", uin: "512N304V02", category: "endowment" },
+    { name: "LIC's Aadhaar Stambh", number: "943", uin: "512N310V03", category: "endowment" },
+    { name: "LIC's Aadhaar Shila", number: "944", uin: "512N309V03", category: "endowment" },
+    { name: "LIC's Jeevan Utsav", number: "871", uin: "512N363V01", category: "endowment" },
+    { name: "LIC's Jeevan Umang", number: "945", uin: "512N312V02", category: "endowment" },
+    { name: "LIC's Dhan Rekha", number: "863", uin: "512N343V01", category: "endowment" },
+    { name: "LIC's New Bima Bachat", number: "916", uin: "512N284V02", category: "money-back" },
+    { name: "LIC's NEW MONEY BACK PLAN - 20 YEARS", number: "920", uin: "512N280V02", category: "money-back" },
+    { name: "LIC's NEW MONEY BACK PLAN - 25 YEARS", number: "921", uin: "512N278V02", category: "money-back" },
+    { name: "LIC's NEW CHILDREN'S MONEY BACK PLAN", number: "932", uin: "512N296V02", category: "money-back" },
+    { name: "LIC's Jeevan Tarun", number: "934", uin: "512N299V02", category: "money-back" },
+    { name: "LIC's Jeevan Shiromani", number: "947", uin: "512N315V02", category: "endowment" },
+    { name: "LIC's Bima Shree", number: "948", uin: "512N316V02", category: "money-back" },
+    { name: "LIC's New TECH TERM", number: "954", uin: "512N351V01", category: "term" },
+    { name: "LIC's New Jeevan Amar", number: "955", uin: "512N350N01", category: "term" },
+    { name: "LIC's Linked Accidental Death Benefit Rider", number: "-", uin: "512A211V02", category: "riders" },
+    { name: "LIC's Accidental Death and Disability Benefit Rider", number: "-", uin: "512B209V02", category: "riders" },
+    { name: "LIC's Accident Benefit Rider", number: "-", uin: "512B203V03", category: "riders" },
+    { name: "LIC's Premium Waiver Benefit Rider", number: "-", uin: "512B204V03", category: "riders" },
+    { name: "LIC's New Critical Illness Benefit Rider", number: "-", uin: "512A212V02", category: "riders" },
+    { name: "LIC's NEW TERM ASSURANCE RIDER", number: "-", uin: "512B210V01", category: "riders" },
+    { name: "LIC's Premium Waiver Benefit Rider (With Auto Cover)", number: "-", uin: "512B205V01", category: "riders" },
+    { name: "LIC's Cancer Cover", number: "905", uin: "512N314V03", category: "health" },
+    { name: "LIC's Arogya Rakshak", number: "906", uin: "512N318V01", category: "health" }
+];
+
+function renderPlans(plans) {
+    const grid = document.querySelector('.plans-grid');
+    grid.innerHTML = plans.map(plan => `
+        <div class="plan-card" data-category="${plan.category}">
+            <div class="plan-header">
+                <span class="plan-number">Plan No. ${plan.number}</span>
+                <span class="uin">UIN: ${plan.uin}</span>
+            </div>
+            <h2>${plan.name}</h2>
+            <div class="plan-content">
+                <div class="plan-icon">
+                    <i class="fas ${getCategoryIcon(plan.category)}"></i>
+                </div>
+                <div class="plan-status">
+                    <span class="withdrawn-badge">Withdrawn</span>
+                    <p class="withdrawal-note">This plan is no longer available for new purchases</p>
+                </div>
+            </div>
+            <a href="/policies/withdrawn/${plan.number}" class="btn-plan-details">
+                <span>View Details</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    `).join('');
+}
+
+function getCategoryIcon(category) {
+    const icons = {
+        endowment: 'fa-piggy-bank',
+        ulip: 'fa-chart-line',
+        pension: 'fa-hand-holding-usd',
+        term: 'fa-shield-alt',
+        riders: 'fa-plus-circle',
+        health: 'fa-heartbeat'
+    };
+    return icons[category] || 'fa-file-alt';
+}
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', () => {
+    renderPlans(plansData);
+    
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const category = e.target.dataset.category;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            const filteredPlans = category === 'all' 
+                ? plansData 
+                : plansData.filter(plan => plan.category === category);
+            renderPlans(filteredPlans);
+        });
+    });
+
+    // Search functionality
+    document.getElementById('planSearch').addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredPlans = plansData.filter(plan => 
+            plan.name.toLowerCase().includes(searchTerm) || 
+            plan.number.includes(searchTerm) ||
+            plan.uin.toLowerCase().includes(searchTerm)
+        );
+        renderPlans(filteredPlans);
+    });
+});
+</script>
+

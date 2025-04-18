@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Login - LIC Advisor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/customer-login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-section">
+                <img src="/images/lic-logo.png" alt="LIC Logo" class="logo">
+            </div>
+            <h2>Welcome Back!</h2>
+            <p class="subtitle">Please login to access your account</p>
+            
+            <form id="loginForm" action="/customer/login" method="POST">
+                <div class="form-group">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <i class="fas fa-check validation-icon success"></i>
+                    <i class="fas fa-times validation-icon error"></i>
+                </div>
+                
+                <div class="form-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <i class="fas fa-check validation-icon success"></i>
+                    <i class="fas fa-times validation-icon error"></i>
+                </div>
+
+                <div class="form-group captcha-group">
+                    <div class="captcha-container">
+                        <canvas id="captchaCanvas"></canvas>
+                        <button type="button" id="refreshCaptcha" class="refresh-captcha">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <input type="text" id="captchaInput" name="captcha" placeholder="Enter captcha code" required>
+                </div>
+
+                <div class="remember-forgot">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Login →</button>
+            </form>
+
+            <div class="register-section">
+                <p>Don't have an account?</p>
+                <a href="/customer/register" class="create-account">Create Account</a>
+            </div>
+
+            <div class="back-home">
+                <a href="/"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/captcha.js"></script>
+    <script src="/js/customer-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+.withdrawn-plans {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+}
+
+.category-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: 2px solid #004B87;
+    background: transparent;
+    color: #004B87;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #004B87;
+    color: white;
+}
+
+.search-box {
+    max-width: 500px;
+    margin: 0 auto 40px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 45px 15px 20px;
+    border: 2px solid #004B87;
+    border-radius: 25px;
+    font-size: 1.1em;
+}
+
+.search-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #004B87;
+}
+
+.withdrawn-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background: #dc3545;
+    color: white;
+    border-radius: 15px;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.withdrawal-note {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* Inherit existing grid and card styles from other plan pages */
